@@ -1,1 +1,92 @@
-<p>formulario-pedido works!</p>
+<div class="paginaCompleta" [formGroup]="datos_pedido">
+    <div class="formulario-pedido">
+        <span class="nuevo-pedido">Nuevo Pedido</span>
+        <div class="inputs-formulario">
+            <div class="flex flex-wrap">
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="nombre" class="label">Nombre:</label>
+                    <input type="text" pInputText formControlName="nombre" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="apellido_1" class="label">Primer Apellido:</label>
+                    <input type="text" pInputText formControlName="apellido_1" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="apellido_2" class="label">Segundo Apellido:</label>
+                    <input type="text" pInputText formControlName="apellido_2" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="nif" class="label">NIF:</label>
+                    <input type="text" pInputText formControlName="nif" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="email" class="label">E-mail:</label>
+                    <input type="text" pInputText formControlName="email" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="codpos" class="label">Código Postal:</label>
+                    <input type="text" pInputText formControlName="codpos" class="input"/>
+                </div>
+            </div>
+            <div class="flex flex-wrap">
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="telefono_1" class="label">Teléfono 1:</label>
+                    <input type="text" pInputText formControlName="telefono_1" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="telefono_2" class="label">Teléfono 2:</label>
+                    <input type="text" pInputText formControlName="telefono_2" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="telefono_tienda" class="label">Teléfono Tienda:</label>
+                    <input type="text" pInputText formControlName="telefono_tienda" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="tipo_instalacion" class="label">Tipo Instalación:</label>
+                    <input type="text" pInputText formControlName="tipo_instalacion" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="canal" class="label">Canal:</label>
+                    <input type="text" pInputText formControlName="canal" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="id_agente" class="label">Agente:</label>
+                    <input type="text" pInputText formControlName="id_agente" class="input"/>
+                </div>
+            </div>
+            <div class="flex flex-wrap">
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="direccion" class="label">Dirección:</label>
+                    <input type="text" pInputText formControlName="direccion" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="localidad" class="label">Localidad:</label>
+                    <input type="text" pInputText formControlName="localidad" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="provincia" class="label">Provincia:</label>
+                    <input type="text" pInputText formControlName="provincia" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="id_tienda" class="label">Tienda:</label>
+                    <input type="text" pInputText formControlName="id_tienda" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="email_tienda" class="label">Email Tienda:</label>
+                    <input type="text" pInputText formControlName="email_tienda" class="input"/>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round label-input">
+                    <label for="oferta" class="label">Oferta:</label>
+                    <input type="text" pInputText formControlName="oferta" class="input"/>
+                </div>
+            </div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 comentarios">
+            <label for="comentarios" class="label">Comentarios:</label>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="comentarios" class="input" [autoResize]="true"></textarea>
+        </div>
+        <div class="boton-enviar">
+            <p-button label="Enviar" [disabled]="isButtonDisabled" severity="secondary" (onClick)="enviarPedido()"></p-button>
+        </div>
+    </div>
+</div>
