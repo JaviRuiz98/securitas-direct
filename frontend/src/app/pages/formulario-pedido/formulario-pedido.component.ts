@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { parametrosPedido } from 'src/app/interfaces/formulario-pedido';
 
-import { FormularioNuevoPedidoService } from 'src/app/service/formulario-nuevo-pedido.service';
+import { FormularioNuevoPedidoService } from 'src/app/service/formulario-nuevo-pedido/formulario-nuevo-pedido.service';
 
 @Component({
   selector: 'app-formulario-pedido',

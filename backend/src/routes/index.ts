@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import pedidosRouter from './pedidos.routes';
 
 const router = Router();
 
@@ -6,5 +7,7 @@ const router = Router();
 router.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
+router.post('/api/pedido/new-pedido', pedidosRouter);
 
 export default router;
