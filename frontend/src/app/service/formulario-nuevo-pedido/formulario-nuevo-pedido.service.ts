@@ -15,6 +15,7 @@ export class FormularioNuevoPedidoService {
   constructor(private http: HttpClient) {}
 
   newPedido(parametros_pedido: parametrosPedido): Observable<boolean> {
+    console.log(parametros_pedido);
     return this.http.post<boolean>(`${BACKEND_API}new-pedido`, parametros_pedido);
   }
 }

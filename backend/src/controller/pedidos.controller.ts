@@ -5,14 +5,13 @@ import { parametrosPedido } from "../interfaces/formulario-pedido";
 export default class PedidosController {
 
     static newPedido = async (req: Request, res: Response) => {
-        console.log('entro en nuevo pedido');
         let response: GenericResponse = {
             code: 200,
             message: "Pedido creado correctamente.",
             data: {}
         };
         try {
-            const eventos = await FormularioPedidoService.nuevoPedido(req.query as any);
+            const eventos = await FormularioPedidoService.nuevoPedido(req.body as any);
             response.data = { eventos };
             response.code = 200;
         } catch (e) {

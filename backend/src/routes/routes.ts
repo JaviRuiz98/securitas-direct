@@ -8,6 +8,6 @@ router.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-router.post('/api/pedido/new-pedido', pedidosRouter);
+router.use('/pedido', pedidosRouter);
 
 export default router;

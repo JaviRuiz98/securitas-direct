@@ -45,6 +45,26 @@ export class FormularioPedidoComponent implements OnInit {
       comentarios: new FormControl<string | null>(null),
     });
 
+    this.parametros_pedido.nombre = 'nombre';
+    this.parametros_pedido.apellido_1 = 'apellido1';
+    this.parametros_pedido.apellido_2 = 'apellido2';
+    this.parametros_pedido.nif = 'nif';
+    this.parametros_pedido.email = 'email';
+    this.parametros_pedido.telefono_1 = 'telefono1';
+    this.parametros_pedido.telefono_2 = 'telefono2';
+    this.parametros_pedido.direccion = 'direccion';
+    this.parametros_pedido.localidad = 'localidad';
+    this.parametros_pedido.provincia = 'provincia';
+    this.parametros_pedido.codpos = 'codpos';
+    this.parametros_pedido.canal = 'canal';
+    this.parametros_pedido.id_agente = 'id_agente';
+    this.parametros_pedido.id_tienda = 'id_tienda';
+    this.parametros_pedido.telefono_tienda = 'telefono_tienda';
+    this.parametros_pedido.email_tienda = 'email_tienda';
+    this.parametros_pedido.tipo_instalacion = 'tipo_instalacion';
+    this.parametros_pedido.oferta = 'oferta';
+    this.parametros_pedido.comentarios = 'comentarios';
+
     this.datos_pedido.statusChanges.subscribe(() => {
       this.updateButtonState();
     });
@@ -66,7 +86,7 @@ export class FormularioPedidoComponent implements OnInit {
 
   enviarPedido() {
     console.log('datos', this.datos_pedido.value);
-    this.asignarPedido();
+    //this.asignarPedido();
     this.FormularioNuevoPedidoService.newPedido(this.parametros_pedido).subscribe((response: boolean) => {
       if (response) {
         console.log('enviado');
