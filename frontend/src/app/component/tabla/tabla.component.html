@@ -1,0 +1,65 @@
+<div class="divTablaEsquinas">
+    <p-table
+        [value]="lista_parametros_tabla"
+        [paginator]="mostrarPaginador"
+        [scrollable]="!mostrarPaginador"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        responsiveLayout="scroll"
+        class="tabla"
+        [(selection)]="lista_filas_seleccionadas" 
+        (selectionChange)="onSelectionChange($event)"
+    >
+        <ng-template pTemplate="header" *ngIf="mostrarCabecera">
+            <tr style="width: 100%;">
+                <th *ngFor="let columna of columnas_tabla" style="text-align: center;">{{ columna.etiqueta }}</th>
+            </tr>
+            <tr *ngIf="mostrarFiltro">
+                <th *ngFor="let columna of lista_filtros; let i = index" >
+                    <ng-container *ngIf="i !== lista_filtros.length - 1 && i != 0" >
+                        <app-filtro [lista_filtros]="lista_filtros[i]" (valorFiltrado)="filtrarDatos($event)" (rangoFecha)="rangoFechas($event)"></app-filtro>
+                    </ng-container>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-i="rowIndex">
+            <tr>
+                <td *ngFor="let columna of columnas_tabla" style="justify-content: center;">
+                    <ng-container *ngIf="fechaNull(rowData[columna.clave]) && columna.clave != 'acciones' && columna.clave != 'checkbox' && columna.clave != 'renovaciones'" >
+                        <div style="display: flex; justify-content: center;">
+                            ----
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="fecha(rowData[columna.clave])">
+                        <div style="display: flex; justify-content: center;">
+                            {{rowData[columna.clave] ? (rowData[columna.clave] | date:'dd/MM/yyyy') : "---"}}
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="string(rowData[columna.clave])">
+                        <div style="display: flex; ">
+                            {{ rowData[columna.clave] }}
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="columna.clave === 'acciones'">
+                        <app-columna-botones [lista_columna_botones]="lista_columna_botones" [rowData]="rowData" (accionEvent)="accionListaBotones($event)"></app-columna-botones>
+                    </ng-container>
+                    <ng-container *ngIf="columna.clave === 'checkbox'" >
+                        <p-tableCheckbox [value]="rowData" ></p-tableCheckbox>
+                    </ng-container>
+                    <ng-container *ngIf="columna.clave === 'renovaciones'" >
+                        <p-dropdown 
+                            [options]="opcionesDropdown" 
+                            [(ngModel)]="rowData.renovar" 
+                            optionLabel="name"
+                            optionValue="value"
+                            (onChange)="onDropdownChange(rowData)"
+                        />
+                    </ng-container>
+                </td>      
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft" *ngIf="importarTablaCSV">
+            <button pButton type="button" (click)="exportExcel()" icon="pi pi-download" style="background: #673ab7; border: none;"></button>
+        </ng-template>
+    </p-table>
+</div>
