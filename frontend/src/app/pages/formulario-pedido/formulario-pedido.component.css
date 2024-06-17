@@ -1,17 +1,51 @@
 .paginaCompleta {
-    display: flex;
+    display: grid;
+    grid-template-rows: max-content;
     justify-content: center;
-    align-items: center;
+    overflow-y: scroll;
     height: 100%;
     width: 100%;
     background-color: gray;
 }
 .formulario-pedido {
     display: grid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    min-height: 500px;
+    min-width: 600px;
+    background-color: white;
+}
+.nuevo-pedido {
+    font-size: 30px;
+    font-family: 'Arial', sans-serif; 
+    font-weight: bold;
+    margin-top: 20px;
+}
+.inputs-formulario {
+    display: flex;
+    justify-content: center;
+    margin: inherit;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.lista-pedidos{
+    display: grid;
     overflow-y: auto;
     border-radius: 5px;
     height: 90%;
-    width: 40%;
     background-color: white;
 }
 .nuevo-pedido {
@@ -22,12 +56,7 @@
     font-family: 'Arial', sans-serif; 
     font-weight: bold;
 }
-.inputs-formulario {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    width: 100%;
-    height: 100%;
-}
+
 .label-input {
     display: grid;
     grid-template-rows: 50% 50%;
@@ -52,4 +81,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    margin: inherit;
+    align-items: start;
 }

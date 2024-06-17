@@ -1,18 +1,5 @@
-.divFiltro {
-    margin: 1%;
-}
-.divTablaEsquinas{
+.boton-enviar {
     display: flex;
-    align-items: center;
-    background: white;
-    width: 99%;
-    border-radius: 10px;
-    height: fit-content;
-}
-.tabla {
     width: 100%;
-}
-
-.divTablaEsquinas ::ng-deep .p-paginator-left-content {
-    margin: 0;
+    height: 100%
 }

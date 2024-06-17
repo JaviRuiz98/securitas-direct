@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { parametrosPedido } from 'src/app/interfaces/formulario-pedido';
+import { Columna } from 'src/app/interfaces/tabla';
+import { CampoFormulario } from 'src/app/interfaces/formulario-pedido';
 
 import { FormularioNuevoPedidoService } from 'src/app/service/formulario-nuevo-pedido/formulario-nuevo-pedido.service';
 
@@ -12,14 +14,47 @@ import { FormularioNuevoPedidoService } from 'src/app/service/formulario-nuevo-p
 })
 export class FormularioPedidoComponent implements OnInit {
 
+  camposFormulario: CampoFormulario[] = [
+    { label: 'Nombre', formControlName: 'nombre', type: 'text' },
+    { label: 'Primer Apellido', formControlName: 'apellido_1', type: 'text' },
+    { label: 'Segundo Apellido', formControlName: 'apellido_2', type: 'text' },
+    { label: 'NIF', formControlName: 'nif', type: 'text' },
+    { label: 'E-mail', formControlName: 'email', type: 'text' },
+    { label: 'Teléfono 1', formControlName: 'telefono_1', type: 'text' },
+    { label: 'Teléfono 2', formControlName: 'telefono_2', type: 'text' },
+    { label: 'Dirección', formControlName: 'direccion', type: 'text' },
+    { label: 'Localidad', formControlName: 'localidad', type: 'text' },
+    { label: 'Provincia', formControlName: 'provincia', type: 'text' },
+    { label: 'Código Postal', formControlName: 'codpos', type: 'text' },
+    { label: 'Canal', formControlName: 'canal', type: 'text' },
+    { label: 'Agente', formControlName: 'id_agente', type: 'text' },
+    { label: 'Tienda', formControlName: 'id_tienda', type: 'text' },
+    { label: 'Teléfono Tienda', formControlName: 'telefono_tienda', type: 'text' },
+    { label: 'Email Tienda', formControlName: 'email_tienda', type: 'text' },
+    { label: 'Tipo Instalación', formControlName: 'tipo_instalacion', type: 'text' },
+    { label: 'Oferta', formControlName: 'oferta', type: 'text' },
+  ];
+
   datos_pedido!: FormGroup;
   parametros_pedido: parametrosPedido = {} as parametrosPedido;
   isButtonDisabled: boolean = true;
-
+  
+  columnas: Columna[] = [
+    { field: 'id_cliente', header: 'ID Cliente' },
+    { field: 'id_pedido', header: 'ID Pedido' },
+    { field: 'id_integracion', header: 'ID Integración' },
+    { field: 'id_clcc', header: 'ID CLCC' },
+    { field: 'id_llamada', header: 'ID Llamada' },
+    { field: 'estado', header: 'Estado' },
+    { field: 'resultado', header: 'Resultado' },
+    { field: 'ts_estado', header: 'Fecha Estado' }
+  ];
+  
   constructor(private FormularioNuevoPedidoService: FormularioNuevoPedidoService) {}
 
   ngOnInit(): void {
     this.inicializarFormulario();
+    this.getListaPedidos();
   }
 
   inicializarFormulario() {
@@ -68,6 +103,11 @@ export class FormularioPedidoComponent implements OnInit {
     this.datos_pedido.statusChanges.subscribe(() => {
       this.updateButtonState();
     });
+  }
+
+
+  getListaPedidos() {
+    
   }
 
   isFormValid(): boolean {
