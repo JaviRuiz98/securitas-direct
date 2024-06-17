@@ -4,6 +4,25 @@ import { FormularioPedidoService } from "../service/formulario-nuevo-pedido/form
 import { parametrosPedido } from "../interfaces/formulario-pedido";
 export default class PedidosController {
 
+    static getListaPedidos = async (req: Request, res: Response) => {
+        let response: GenericResponse = {
+            code: 200,
+            message: "Pedido creado correctamente.",
+            data: {}
+        };
+        try {
+            console.log(req);
+            const eventos = await FormularioPedidoService.getListaPedidos(req.body as any);
+            response.data = { eventos };
+            response.code = 200;
+        } catch (e) {
+            console.log(e as string);
+            response.message = e as string;
+            response.code = 500;
+        }
+        res.json(response);
+    }
+
     static newPedido = async (req: Request, res: Response) => {
         let response: GenericResponse = {
             code: 200,

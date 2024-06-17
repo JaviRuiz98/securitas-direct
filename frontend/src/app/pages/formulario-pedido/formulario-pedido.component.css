@@ -42,11 +42,9 @@
     align-items: flex-start;
 }
 .lista-pedidos{
-    display: grid;
-    overflow-y: auto;
-    border-radius: 5px;
-    height: 90%;
     background-color: white;
+    padding: 30px;
+    border-radius: 10px;
 }
 .nuevo-pedido {
     display: flex;

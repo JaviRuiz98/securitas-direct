@@ -14,8 +14,10 @@ export class FormularioNuevoPedidoService {
 
   constructor(private http: HttpClient) {}
 
-  getListaPedidos(): Observable<listaPedidos[]> {
-    return this.http.get<listaPedidos[]>(`${BACKEND_API}lista`);
+  getListaPedidos(dateTime: string): Observable<listaPedidos[]> {
+    const url = `${BACKEND_API}lista?dateTime=${encodeURIComponent(dateTime)}`;
+    console.log(url);
+    return this.http.get<listaPedidos[]>(url);
   }
 
   newPedido(parametros_pedido: parametrosPedido): Observable<boolean> {

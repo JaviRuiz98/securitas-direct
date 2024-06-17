@@ -1,6 +1,8 @@
-<div class="boton-enviar">
-    <p-button type="button" icon="pi pi-external-link" (click)="enviar()" label="Exportar"></p-button>
+<div class="boton-buscar" *ngIf="boton_buscar_fecha_hora">
+    <input type="datetime-local" class="datetime-input" [(ngModel)]="selectedDateTime"/>
+    <button class="search-button" (click)="sendDateTime()">Buscar</button>
 </div>
+
 
 <p-table [columns]="columnas" [value]="parametros" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header" let-columns>

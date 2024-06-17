@@ -21,4 +21,13 @@ export interface parametrosPedido {
   oferta: string | null;
   comentarios: string | null;
 }
-  
+export interface listaPedidos {
+  id_cliente: string;
+  id_pedido: string;
+  id_integracion: number;
+  id_clcc: number;
+  id_llamada: number;
+  estado: string;
+  resultado: string;
+  ts_estado: Date;
+}

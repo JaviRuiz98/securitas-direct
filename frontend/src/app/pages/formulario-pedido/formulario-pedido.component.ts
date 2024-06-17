@@ -54,7 +54,6 @@ export class FormularioPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.inicializarFormulario();
-    this.getListaPedidos();
   }
 
   inicializarFormulario() {
@@ -105,11 +104,11 @@ export class FormularioPedidoComponent implements OnInit {
     });
   }
 
-
-  getListaPedidos() {
-    
+  getListaPedidos(dateTime: string) {
+    console.log('Selected Date and Time:', dateTime);
+    this.FormularioNuevoPedidoService.getListaPedidos(dateTime).subscribe((response: any) => {
+    })
   }
-
   isFormValid(): boolean {
     const controls = this.datos_pedido.controls;
     for (const name in controls) {

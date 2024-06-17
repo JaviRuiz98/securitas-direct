@@ -1,6 +1,25 @@
-import { parametrosPedido } from "../../interfaces/formulario-pedido";
+import { parametrosPedido, listaPedidos } from "../../interfaces/formulario-pedido";
 import { DB } from "../../config/typeorm";
 export class FormularioPedidoService {
+
+  static async getListaPedidos(fecha: Date): Promise<listaPedidos[]> {
+    console.log(fecha);
+    const query = `
+    SELECT id_cliente, id_pedido, id_integracion, id_clcc, id_llamada, estado, resultado, ts_estado
+    FROM pedidos
+    WHERE ts_estado > ?;`;
+    const values = [fecha];
+    try {
+      const result = await DB.query(query, values);
+      console.log(result);
+      return result;
+    } catch (e) {
+      console.error("Error al obtener la lista de pedidos:", e);
+      throw e;
+    }
+}
+
+
   static async nuevoPedido(pedido: parametrosPedido): Promise<boolean> {
     const query = `
     INSERT INTO pedidos (nombre, apellido_1, apellido_2, nif, email, telefono_1, telefono_2, direccion, localidad, provincia, codpos, canal, id_agente, id_tienda, telefono_tienda, email_tienda, tipo_instalacion, oferta, comentarios)
