@@ -11,8 +11,7 @@ export default class PedidosController {
             data: {}
         };
         try {
-            console.log(req);
-            const eventos = await FormularioPedidoService.getListaPedidos(req.body as any);
+            const eventos = await FormularioPedidoService.getListaPedidos(req.query.dateTime as any);
             response.data = { eventos };
             response.code = 200;
         } catch (e) {

@@ -10,7 +10,7 @@ import { Input, Output, EventEmitter } from '@angular/core';
 })
 export class TablaComponent implements OnInit{
 
-  @Input() parametros: Parametros[] = [];
+  @Input() parametros: Parametros = {} as Parametros;
   @Input() columnas: Columna[] = [];
   @Input() boton_buscar_fecha_hora: boolean = false;
 

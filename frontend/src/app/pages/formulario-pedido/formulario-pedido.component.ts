@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { parametrosPedido } from 'src/app/interfaces/formulario-pedido';
-import { Columna } from 'src/app/interfaces/tabla';
+import { listaPedidos, parametrosPedido } from 'src/app/interfaces/formulario-pedido';
+import { Columna, Parametros } from 'src/app/interfaces/tabla';
 import { CampoFormulario } from 'src/app/interfaces/formulario-pedido';
 
 import { FormularioNuevoPedidoService } from 'src/app/service/formulario-nuevo-pedido/formulario-nuevo-pedido.service';
@@ -38,7 +38,8 @@ export class FormularioPedidoComponent implements OnInit {
   datos_pedido!: FormGroup;
   parametros_pedido: parametrosPedido = {} as parametrosPedido;
   isButtonDisabled: boolean = true;
-  
+  lista_pedidos: Parametros = {} as Parametros;
+
   columnas: Columna[] = [
     { field: 'id_cliente', header: 'ID Cliente' },
     { field: 'id_pedido', header: 'ID Pedido' },
@@ -49,6 +50,7 @@ export class FormularioPedidoComponent implements OnInit {
     { field: 'resultado', header: 'Resultado' },
     { field: 'ts_estado', header: 'Fecha Estado' }
   ];
+
   
   constructor(private FormularioNuevoPedidoService: FormularioNuevoPedidoService) {}
 
@@ -105,8 +107,18 @@ export class FormularioPedidoComponent implements OnInit {
   }
 
   getListaPedidos(dateTime: string) {
-    console.log('Selected Date and Time:', dateTime);
     this.FormularioNuevoPedidoService.getListaPedidos(dateTime).subscribe((response: any) => {
+      console.log('response', response.data.eventos);
+      const fields = this.columnas.map((columna: Columna) => columna.field);
+
+      // this.lista_pedidos[0].datos = response.data.eventos;
+      // this.lista_pedidos[0].clave = fields;
+      const parametros: Parametros = {
+        datos: response.data.eventos,
+        clave: fields
+      };
+      this.lista_pedidos = parametros;
+      console.log('this.lista_pedidos', this.lista_pedidos);
     })
   }
   isFormValid(): boolean {

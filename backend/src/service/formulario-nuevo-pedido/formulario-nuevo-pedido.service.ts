@@ -5,8 +5,8 @@ export class FormularioPedidoService {
   static async getListaPedidos(fecha: Date): Promise<listaPedidos[]> {
     console.log(fecha);
     const query = `
-    SELECT id_cliente, id_pedido, id_integracion, id_clcc, id_llamada, estado, resultado, ts_estado
-    FROM pedidos
+    SELECT *
+    FROM lista_pedidos
     WHERE ts_estado > ?;`;
     const values = [fecha];
     try {

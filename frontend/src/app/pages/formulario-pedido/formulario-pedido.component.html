@@ -18,6 +18,6 @@
         </div>
     </div> 
     <div class="lista-pedidos">
-        <app-tabla [columnas]="columnas" [boton_buscar_fecha_hora]="true" (dateTimeSelected)="getListaPedidos($event)"></app-tabla>
+        <app-tabla [parametros]="lista_pedidos" [columnas]="columnas" [boton_buscar_fecha_hora]="true" (dateTimeSelected)="getListaPedidos($event)"></app-tabla>
     </div>
 </div>
