@@ -1,6 +1,6 @@
 export interface parametrosPedido {
-  id: number;
-  id_cliente: number;
+  id_pedido: string;
+  id_cliente: string;
   nombre: string | null;
   apellido_1: string | null;
   apellido_2: string | null;
