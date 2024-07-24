@@ -2,7 +2,7 @@ import { parametrosPedido, listaPedidos } from "../../interfaces/formulario-pedi
 import { DB } from "../../config/typeorm";
 export class FormularioPedidoService {
 
-  static async getListaPedidos(fecha: Date): Promise<listaPedidos[]> {
+  static async getListaPedidosByDate(fecha: Date): Promise<listaPedidos[]> {
     console.log(fecha);
     const query = `
     SELECT *

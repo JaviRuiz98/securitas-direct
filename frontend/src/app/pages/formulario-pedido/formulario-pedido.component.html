@@ -20,4 +20,7 @@
     <div class="lista-pedidos">
         <app-tabla [parametros]="lista_pedidos" [columnas]="columnas" [boton_buscar_fecha_hora]="true" (dateTimeSelected)="getListaPedidos($event)"></app-tabla>
     </div>
+    <div>
+        <p-button (onClick)="getLista()"></p-button>
+    </div>
 </div>

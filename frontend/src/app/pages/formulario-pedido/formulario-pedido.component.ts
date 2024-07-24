@@ -105,9 +105,14 @@ export class FormularioPedidoComponent implements OnInit {
       this.updateButtonState();
     });
   }
-
+  getLista(){
+    this.FormularioNuevoPedidoService.getListaPedidos().subscribe((response: any) => {
+      console.log('response', response);
+      
+    })
+  }
   getListaPedidos(dateTime: string) {
-    this.FormularioNuevoPedidoService.getListaPedidos(dateTime).subscribe((response: any) => {
+    this.FormularioNuevoPedidoService.getListaPedidosByDate(dateTime).subscribe((response: any) => {
       console.log('response', response.data.eventos);
       const fields = this.columnas.map((columna: Columna) => columna.field);
 
